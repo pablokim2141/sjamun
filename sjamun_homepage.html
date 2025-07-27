@@ -34,6 +34,13 @@
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
+        header {                    /* start completely clear */
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+        header.scrolled {           /* add green once hero is passed */
+            background: rgba(26, 77, 58, 0.95);
+        }
 
         nav {
             display: flex;
@@ -79,11 +86,20 @@
             transform: translateY(-2px);
         }
 
+        /* HERO SECTION – use photo instead of green gradient */
         .hero {
+            position: relative;           /* allows overlay if you ever add ::before */
+            padding: 160px 0;             /* keep current vertical spacing */
             text-align: center;
-            padding: 100px 0;
-            background: radial-gradient(circle at center, rgba(26, 77, 58, 0.8) 0%, rgba(15, 46, 34, 0.9) 100%);
+            
+            /* 1) translucent overlay, 2) your image */
+            background: linear-gradient(
+                        rgba(0, 0, 0, 0.45),   /* top overlay tint */
+                        rgba(0, 0, 0, 0.60)    /* bottom overlay tint */
+                    ),
+                    url('hero.JPG') center/cover no-repeat;
         }
+
 
         .hero h1 {
             font-size: 4.5rem;
@@ -352,7 +368,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 SJA MUN Club & JunYoung Kim </p>
+                <p>&copy; 2025 JunYoung Kim </p>
                 <p>SJAMUN III | September 27-28, 2025</p>
             </div>
         </div>
@@ -409,6 +425,7 @@
                 header.style.background = 'rgba(26, 77, 58, 0.95)';
             }
         });
+        
     </script>
 </body>
 </html>
